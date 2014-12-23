@@ -328,6 +328,15 @@
     </div>
 </section>
 
+<section>
+    <h2>热身：</h2>
+    <div>程序员最害怕康熙的第几个儿子？</div>
+</section>
+
+<section>
+    <h2>八阿哥（Bug）</h2>
+</section>
+
 <section data-background-transition="slide">
     <div class="page-1-title">
         <p>今天的主题</p>
@@ -339,7 +348,7 @@
 
         <p>3、如何快速响应，快速跟进？</p>
 
-        <p>4、与客户端交互的一些利器介绍</p>
+        <p>4、多端合作的一些必备利器</p>
 
         <p>5、多端合作的收获</p>
     </div>
@@ -374,10 +383,14 @@
     <img class="fragment img-p6-3" src="img/tmall2.png" style="width: 360px;" alt="">
 </section>
 <section>
+    <img src="img/zhedielan.png" style="width: 360px;" alt="">
+</section>
+<section>
     <img src="img/shuang12.png" style="width: 360px;" alt="">
 </section>
 
 <section>
+    <img src="img/diaosi1.jpg" style="width: 200px;" alt="">
     <h2>这么多，怎么办？</h2>
     <img class="fragment"  src="img/mingren2.jpg" style="width: 300px;" alt="">
 </section>
@@ -391,363 +404,146 @@
     <h2 class="">我们需要这样子去处理问题...</h2>
 </section>
 
-<!--<section>
-    <h2 class="">很久以前……</h2>
-    <h2 class="">我们如何使用图标？</h2>
-    <h2 class="">我们如何使用图标？</h2>
-</section>
 <section>
-    <h2>1.切图</h2>
-    <img src="img/ps1.png" alt="">
+    <h2>1st？</h2>
+    <img src="img/q1_1.jpg" style="width: 300px;" alt="">
+    <h2 class="">当遇到产品直接跟你提需求时？</h2>
 </section>
 
 <section>
-    <h2>2.拼合（Sprites）</h2>
-    <img src="img/icon.png" alt="">
-</section>
-
-<section>
-    <h2>原始社会</h2>
-    <img src="img/original.png" alt="">
-</section>
-
-<section>
-    <h2>后来</h2>
-    <ul>
-        <li><a href="http://www.99css.com/archives/tag/cssgaga">CSSGaga</a></li>
-        <li class=""><a href="https://www.npmjs.org/package/grunt-css-sprite">grunt-css-sprite</a></li>
-    </ul>
-</section>
-
-<section>
-    <h2>再后来……</h2>
-</section>
-
-<section>
-    <h2>现实是？</h2>
-    <img src="img/t-white.png" alt="">
-</section>
-
-<section id="section-color" data-background-transition="slide" data-background="img/desiger.png">
-    <h2>换个颜色</h2>
-    <img src="" alt="">
-    <img src="img/t-red.png" alt="">
-</section>
-<section data-background-transition="slide" data-background="img/desiger.png">
-    <h2>改个大小吧</h2>
-    <img src="img/t-red.png" width="200" height="200" alt="">
-</section>
-
-<section data-background-transition="slide" data-background="img/desiger.png">
-    <h2>换个角度吧</h2>
-    <img src="img/t-red-45.png" alt="">
-</section>
-
-<section>
-    <h2>欧巴→欧吉桑</h2>
-    <img src="img/li2.jpg" alt="">
-    <img src="img/li1.png" alt="">
-</section>
-
-<section>
-    <h2>什么是(zhi)体图标捏？</h2>
-</section>
-
-<section>
-    <h2>就是用(zhi)体语言摆个图标</h2>
-    <img src="img/firefox.gif" alt="">
-</section>
-
-<section>
-    <h2>相见不曾相识……</h2>
-
-    <p class="fragment">
-        <img src="img/sofish.png" alt="sofish">
-    </p>
-</section>
-
-<section>
-    <h2>iOS 自带的字体图标</h2>
-
-    <p><a href="http://zh.wikipedia.org/wiki/%E7%B9%AA%E6%96%87%E5%AD%97">Emoji 绘文字</a>
-    </p>
-
-    <div class="fade-box">
-        <img class="fragment" src="img/icon1.png" alt="">
-        <img class="fragment" src="img/icon2.png" alt="">
-        <img class="fragment" src="img/keybord.png" alt="">
-    </div>
-</section>
-<section>
-    <h2>相见不曾相识……</h2>
-    <img src="http://gtms01.alicdn.com/tps/i1/T1rnyPFvNaXXc_0NYn-808-416.png" alt="">
-</section>
-<section>
-    <h2>扒衣见君</h2>
-    <img src="http://gtms03.alicdn.com/tps/i3/T1X5WPFAFiXXb7HNTn-808-381.png" alt="">
-</section>
-<section>
-    <h2>iconfont 实时预览</h2>
-
-    <div class="icon-demo">
-        <div id="test" class="icon-test">&#61449;</div>
-    </div>
-    <script type="text/javascript">
-        KISSY.use('node, event', function (S, N, E) {
-            S.ready(function (S) {
-                var $ = S.all;
-                $(".icon-test").on("focus", function () {
-                    var content = $(this).html();
-                    var htmlStr = "";
-
-                    for (var i = 0; i < content.length; i++) {
-                        htmlStr += '&amp;#' + content.charCodeAt(i) + ';';
-                    }
-                    ;
-                    if (content.length == 0) htmlStr = '&amp;#32;';
-
-                    $(this).html("<pre>" + htmlStr + "</pre>")
-                });
-                $(".icon-test").on("blur", function () {
-                    var str = $(this).html();
-                    var htmlStr = "";
-                    var unicodeArray;
-                    str = str.replace(/<\/?pre>/g, "");
-                    str = S.one('<textarea />').html(str).val();
-                    if (/&#\d+;/.test(str)) {
-                        unicodeArray = str.split(";");
-                        for (var i = 0; i < unicodeArray.length; i++) {
-                            htmlStr += String.fromCharCode(unicodeArray[i].replace(/[&#;]/g, ''));
-                        }
-
-                        $(this).html(htmlStr);
-                    } else {
-                        alert("unicode 不合法！");
-                    }
-                });
-            });
-        })
-    </script>
-</section>
-
-<section>
-    <h2>icon font 效果</h2>
-    <img src="img/ie6.png" alt="">
-    <img src="img/ie10.png" alt="">
-</section>
-
-<section>
-    <h2>icon font 效果</h2>
-    <img src="img/mac.png" alt="">
-</section>
-
-<section>
-    <h2>淘宝首页</h2>
-    <img src="img/taobao.png" alt="">
-</section>
-
-<section>
-    <h2>淘宝集市</h2>
-    <img src="img/jishi.png" alt="">
-</section>
-
-<section>
-    <h2>如何制作 icon font</h2>
-    <ul>
-        <li>iconfont.cn 直接上传 SVG
-            <br>
-            <img src="img/up.png" alt="">
-        </li>
-    </ul>
-</section>
-
-<section>
-    <h2>iOS7 图标栅格</h2>
-
-    <p class="icon-box">
-        <img class="icon-photo fragment" src="img/iOS7-icon-grid.svg" alt="iOS7 photo icon">
-    </p>
-</section>
-
-<section>
-    <h2>制作的注意事项</h2>
-    <img src="img/icon-g.png" alt="">
-</section>
-
-<section>
-    <h2>制作的注意事项</h2>
-    <img src="img/illustrator-endmark.png" alt="">
-</section>
-
-<section>
-    <h2>制作的注意事项</h2>
-    <img src="img/ai.png" alt="">
-</section>
-
-<section>
-    <h2>如何使用？</h2>
-
-    <p>1. 引用字体</p>
-    <pre><code>
-        @font-face {
-        font-family: 'FontName';
-        src:url('FileName.eot'); /* IE9+ */
-        /* IE6-IE8 */
-        src:url('FileName.eot?#iefix') format('embedded-opentype'),
-        /* CR,FF */
-        url('FileName.woff') format('woff'),
-        /* CR,FF,OP,Safari,Android, iOS 4.2+ */
-        url('FileName.ttf') format('truetype'),
-        /* iOS 4.1- */
-        url('FileName.svg#FontName') format('svg');
-        }
-    </code></pre>
-</section>
-<section>
-    <h2>如何使用？</h2>
-
-    <p>2. 定义一个Class使用字体</p>
-    <pre><code>
-        .iconfont {
-        font-family: "iconfont";
-        font-size: 16px;
-        font-style: normal;
-        font-weight: normal;
-        font-variant: normal;
-        line-height: 1;
-        speak: none;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        }
-    </code></pre>
-</section>
-<section>
-    <h2>如何使用？</h2>
-
-    <p>3. 获取图标编码</p>
-    <pre><code>
-        <span class="iconfont">#3301</span>
-    </code></pre>
-</section>
-
-<section>
-    <img src="img/font1.png" alt="">
-</section>
-
-<section>
-    <h2>为何要用 icon font？</h2>
-</section>
-
-
-<section>
-    <h2>icon font 优点</h2>
-    <ul>
-        <li>图标矢量化</li>
-        <li><a href="https://github.com/thx/cube/blob/gh-pages/src/iconfont-all.css#L52" target="_blank">让样式回归 CSS</a>
-        <pre><code>
-            <h2 class="icon-size">标题前面有一个图标</h2>
-            .icon-size {
-            content: "\3436";
-            }
-        </code></pre>
-        </li>
-        <li>图标规范化</li>
-        <li>自动上传到阿里云CDN</li>
-    </ul>
-</section>
-
-<section>
-    <h2>icon font 缺点</h2>
-    <ul>
-        <li>色彩单一？</li>
-        <li>不同平台显示效果参差不齐</li>
-        <li>需要专门维护
-            <img src="img/iconfont.png" alt="">
-        </li>
-    </ul>
-</section>
-
-<section>
-    <h2>超越 icon font？</h2>
-
-    <p>见证奇迹的时刻到了！</p>
-</section>
-
-<section>
-    <h2>多彩图标</h2>
-
-    <div class="demo" id="demo-github">
-        <div class="iconfont icon-github" data-fragment-index="1">
-            <span></span>
-        </div>
+    <img src="img/ans1.jpg" style="width: 300px;" alt="">
+    <div style="text-align: left">
+        <p class="">1、多问个为什么？（体现产品什么价值 达到产品什么目标）</p>
+        <p class="">2、是不是只有这种处理方案，是否还有更优方案？</p>
+        <p class="">3、可放在需求池进行计划安排</p>
+        <p class="">4、对于需求，学会判断优先级，分级杀怪！</p>
     </div>
 </section>
 
 <section>
-    <h2>撸一撸</h2>
-    <a href="#"><img src="img/lulu.png" alt=""></a>
+    <h2>2nd？</h2>
+    <img src="img/group.png" style="width: 600px;" alt="">
+    <h2 class="">当遇到与其他端交互出现问题时？</h2>
 </section>
 
 <section>
-    <h2><a href="http://forecastfont.iconvau.lt/">多彩图标-镂空法</a>
-    </h2>
-    <img src="img/g2.jpg" alt="">
-
-    <p>放大后：
-        <br>
-        <img src="img/g1.jpg" alt="">
-    </p>
+    <img src="img/ans2.png" style="width: 600px;" alt="">
+    <div style="text-align: left">
+        <p class="">1、快速找到该端接口人</p>
+        <p class="">2、进行有效沟通--沟通时效性（面谈>手机>eim>email）</p>
+        <p class="">3、与其他端进行接口沟通时候,先明确线上地址,编码时考虑配置下发情况</p>
+    </div>
 </section>
 
 <section>
-    <h2><a href="http://forecastfont.iconvau.lt/">多彩图标-叠加法</a>
-    </h2>
-    <img src="http://gtms02.alicdn.com/tps/i2/T1MxyOFB4cXXaxJprD-606-407.png" alt="">
-</section>
-<section>
-    <img src="img/color-icon.png" alt="">
-</section>
-
-<section>
-    <h2><a href="http://jsbin.com/qixacoga/1/watch?css,output" target="_blank">响应式图标</a>
-    </h2>
-
-    <img src="http://uisdc.qiniudn.com/wp-content/uploads/2013/12/responsive-icons-animation.gif" alt="">
-</section>
-<section>
-    <h2><a href="http://jsbin.com/gutesepu/1" target="_blank">响应式图标</a>
-    </h2>
-
-    <h3>设计与辨识度的平衡</h3>
-    <img src="http://uisdc.qiniudn.com/wp-content/uploads/2013/10/sizes.png" alt="">
+    <img src="img/zhongjiezhe.jpg" style="width: 300px;" alt="">
+    <div style="text-align: left">
+        <p class="">1、了解并关注整个项目问题状况</p>
+        <p class="">2、善用wa统计 UCMT监控等工具跟踪处理问题</p>
+        <p class="">3、争取做问题的终结者</p>
+    </div>
 </section>
 
 <section>
-    <h2>未来？</h2>
-
-    <h3>SVG 矢量动画图标</h3>
-    <a href="http://yisibl.github.io/loveicon/">
-        <img src="img/love-icon.gif" alt="">
-    </a>
+    <img src="img/biji.jpg" style="width: 300px;" alt="">
+    <div style="text-align: left">
+        <p>沟通过程中善于运用笔记</p>
+        <p>好记性不如烂笔头，烂笔头不如印象笔记(等同类产品)</p>
+    </div>
 </section>
 
 <section>
-    <h2>SVG 矢量动画图标</h2>
-
-    <h3>livicons</h3>
-    <a href="http://livicons.com/#promo7">
-        <img src="img/icon-a.png" alt="">
-    </a>
+    <div>到这里是否感觉已经感觉到浑身带劲呢？</div>
+    <img src="img/MT1.png" class="fragment" style="width: 300px;" alt="">
+    <img src="img/MT2.png" class="fragment" style="width: 300px;" alt="">
 </section>
 
-<section data-background-transition="slide" data-background="img/tbg.png">
+<section>
+    <div>可是光有等级还不行的，我们还需要 “装备”！！！</div>
+</section>
 
-</section>-->
+<section>
+    <h2>多端合作的一些必备利器</h2>
+</section>
+
+<section>
+    <div>1、UC浏览器开发者版本</div>
+    <img src="img/kaifazhe.jpg" style="width: 100px;">
+    <div class="fragment"> 演示 </div>
+</section>
+
+<section>
+    <div>2、自己动手编写客户端接口模拟器</div>
+    <div class="fragment">研发过程中引入，在发布时候移除</div>
+    <div class="fragment">演示</div>
+</section>
+
+<section>
+    <div>3、各种牛掰工具集合地址</div>
+        <div class="fragment">http://uctc.ucweb.local/</div>
+        <div class="fragment">http://10.1.73.69/</div>
+        <div class="fragment">http://10.1.72.126/</div>
+        <div class="fragment">http://uctest.ucweb.com:9602/cm/pkg/</div>
+</section>
+
+<section>
+    <div>4、常用编程语言类API  Velocity</div>
+    <div class="fragment">演示</div>
+</section>
+
+<section>
+    <div>到这里有带上装备的感觉了吧？</div>
+    <img src="img/MT_end.jpg" class="fragment" style="width: 300px;" alt="">
+</section>
+
+<section>
+    <h2>最后  多端合作的收获</h2>
+</section>
+
+<section>
+    <h2>多端合作我们收获了什么？</h2>
+</section>
+
+<section>
+    <div class="fragment">快乐</div>
+    <div class="fragment">知识</div>
+    <div class="fragment">信任</div>
+    <div class="fragment">人脉</div>
+</section>
+
+<section>
+    <h2>ENDCALL ?</h2>
+</section>
+
+<section>
+    <img src="img/bridge.png" style="width: 600px;" alt="">
+    <div class="fragment">这是一座桥</div>
+    <div class="fragment">人们从一头 走向 另一头</div>
+</section>
+
+<section>
+    <h2>那如果与多端合作呢 ?</h2>
+</section>
+
+<section>
+    <img src="img/lijiaoqiao.jpg" style="width: 600px;" alt="">
+    <div class="fragment">我们需要变成立交桥</div>
+    <div class="fragment">保证业务畅通无阻</div>
+</section>
+
+<section>
+    <img src="img/jingdai.png" style="width: 300px;" alt="">
+</section>
 
 <section>
     <h2>Q&A</h2>
-
     <h3>Thank You ^_^</h3>
+    <div class="fragment">鸣谢 视频导航组买买提|刘威龙 童鞋</div>
+    <div class="fragment">鸣谢 图片小说组大子杰 童鞋</div>
+    <div class="fragment">鸣谢 生活导航全体小伙伴</div>
+    <div class="fragment">鸣谢 购物专项全体小伙伴</div>
+    <p class="smaller fragment" style="margin-top: 15px">大导航|生活导航|吴荣华|wurh@ucweb.com</p>
+
 </section>
 
 </div>
