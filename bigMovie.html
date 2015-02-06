@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+
+<head>
+<meta charset="utf-8">
+<title>超级无敌大卡片</title>
+<meta name="author" content="yisi">
+
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-title" content="一端与多端连接">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+<meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, minimal-ui">
+<link rel="stylesheet" href="css/reveal.min.css">
+<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="lib/css/zenburn.css">
+
+<link rel="stylesheet" href="css/demo/icon-github.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+    document.write('<link rel="stylesheet" href="css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css" type="text/css" media="print">');
+</script>
+<script src="http://g.tbcdn.cn/kissy/k/1.3.2/seed-min.js"></script>
+
+<!--[if lt IE 9]>
+<script src="lib/js/html5shiv.js"></script>
+<![endif]-->
+
+<style>
+.summary .line {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.summary .line a {
+    display: table-cell;
+    vertical-align: middle;
+    width: 180px;
+    text-align: center;
+}
+
+.summary .content {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 20px;
+    text-align: left;
+    overflow: hidden;
+    *zoom: 1;
+}
+
+.powered {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    font-size: 30px;
+    color: #555;
+    margin-left: -200px !important;
+    margin-top: -50px !important;
+}
+
+.powered .smaller {
+    font-size: 20px;
+}
+
+.powered p {
+    margin: 6px auto;
+}
+
+.powered a {
+    color: #555;
+}
+
+.page-1-title {
+    position: fixed;
+    left: 50%;
+    top: 0px;
+    font-size: 30px;
+    color: #555;
+    margin-left: -100px !important;
+    margin-top: -200px !important;
+    text-align: left;
+}
+
+.page-1-content {
+    position: fixed;
+    width: 600px;
+    left: 50%;
+    top: 0px;
+    margin-left: -200px !important;
+    margin-top: -100px !important;
+    text-align: left;
+    font-size: 28px !important;
+}
+
+.reveal[data-background-transition=slide] > .backgrounds .slide-background, .reveal > .backgrounds .slide-background[data-background-transition=slide] {
+    background-size: contain;
+    background-position: 10% 30%;
+}
+
+.reveal > .backgrounds .slide-background:nth-of-type(1),
+.reveal > .backgrounds .slide-background:nth-of-type(2) {
+    background-size: 80%;
+    background-position: 50% 30px;
+}
+
+.reveal > .backgrounds .slide-background:nth-last-of-type(2) {
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.reveal .author {
+    margin-top: 100px;
+    font-size: 60px;
+}
+
+.reveal .title {
+    margin-top: 60px;
+}
+
+.icon-box {
+    position: relative;
+    background: url(img/photo-icon.svg) 50% 50% no-repeat;
+    background-size: 66%;
+}
+
+.icon-box img {
+    width: 66%;
+}
+
+.fade-box {
+    position: relative;
+    min-height: 500px;
+}
+
+.fade-box img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto !important;
+}
+
+.qrcode {
+    width: 500px;
+}
+
+.mux-logo {
+    position: fixed;
+    z-index: 999;
+    left: 20px;
+    top: 20px;
+}
+
+.icon-demo {
+    margin: 50px auto 0 !important;
+    width: 99%;
+}
+
+.icon-demo .icon-test {
+    font-family: icon-test;
+    min-height: 160px;
+    line-height: 160px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    font-size: 100px;
+    display: block;
+    padding: 3px 0;
+    color: cadetblue;
+}
+
+.icon-demo .icon-test:focus {
+    outline: 0 none;
+}
+
+.icon-test {
+    position: relative;
+    letter-spacing: .3em;
+    word-wrap: break-word;
+    word-break: break-all;
+    -webkit-user-modify: read-write-plaintext-only; /* 粘贴时过滤富文本 */
+}
+
+.icon-test:focus {
+    outline: 1px solid #66AFE9;
+    border-color: #66AFE9;
+    box-shadow: 0 0 8px rgba(102, 175, 233, 0.56);
+}
+
+.icon-test pre {
+    padding: 0 6px;
+    letter-spacing: normal;
+    overflow: hidden;
+    background: none;
+    box-shadow: none;
+}
+
+.icon-test {
+    font-family: "icon-test";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    /* 1 */
+    speak: none;
+    /* 2 */
+    -webkit-font-smoothing: antialiased;
+    /* 3 */
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+    font-family: "icon-test";
+    font-weight: normal;
+    font-style: normal;
+    src: url("http://t.tbcdn.cn/apps/e/brix/fonts/uxiconfont.eot");
+    src: url("http://t.tbcdn.cn/apps/e/brix/fonts/uxiconfont.eot?#iefix") format("embedded-opentype"), url("http://t.tbcdn.cn/apps/e/brix/fonts/uxiconfont.woff") format("woff"), url("http://t.tbcdn.cn/apps/e/brix/fonts/uxiconfont.ttf") format("truetype"), url("http://t.tbcdn.cn/apps/e/brix/fonts/uxiconfont.svg#iconfont") format("svg");
+}
+
+.user .con {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: left;
+    padding-right: 20px;
+}
+
+.user .con img {
+    max-height: none;
+    max-width: 100%;
+}
+
+.user .con h3 + h3 {
+    border-bottom: 2px solid #000;
+    min-width: 3em;
+    line-height: 1.3;
+}
+
+.sec-p6 {
+    position: relative;
+    height: 640px;
+}
+
+.sec-p6 img {
+    position: absolute;
+    width: 360px;
+    display: block;
+    height: 640px;
+!important;
+}
+
+.img-p6-2 {
+    left: 300px;
+}
+
+.img-p6-3 {
+    left: 600px;
+}
+</style>
+<script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="js/socket.io.min.js"></script>
+<script type="text/javascript" src="js/qrcode.min.js"></script>
+<script type="text/javascript">
+    var env;
+    $(function () {
+        $('#demo-github').click(function () {
+            $(this).toggleClass('active');
+        })
+    })
+
+    $.ajax({
+        // url: 'http://localhost:3000/getEnv',
+        // dataType: 'jsonp',
+        // success: function(data) {
+        //   env = data;
+
+        url: 'http://localhost:3000/env',
+        dataType: 'jsonp',
+        success: function (data) {
+            env = data;
+
+            // draw qrcode
+            var qrcodedraw = new QRCodeLib.QRCodeDraw();
+            var request = ['http://', env.ip, ':', env.port, '/mobile/control'].join('');
+            qrcodedraw.draw(document.querySelector('.qrcode'), request, function (err) {
+                if (err) {
+                    return console.log(err.message);
+                }
+            });
+        }
+    })
+
+
+    var socket = io.connect('http://localhost:3000');
+
+    socket.on('animate', function () {
+        if ($('#qrcode').css('display') !== 'none') {
+            $('#demo-github').toggleClass('active');
+        }
+    })
+
+    var socket = io.connect('http://localhost:3000');
+    socket.emit('ppt');
+
+    socket.on('ppt left', function () {
+        Reveal.left();
+    });
+
+    socket.on('ppt right', function () {
+        Reveal.right();
+    });
+</script>
+</head>
+
+<body>
+
+<div class="reveal">
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <!-- 二维码 -->
+        <section>
+            <a href="http://10.1.88.31:8000/bigMovie.html#/1">业务卡片系列</a>
+            <a href="http://10.1.88.31:8000/bigMovie.html#/14">伙伴名系列</a>
+            <a href="http://10.1.88.31:8000/bigMovie.html#/25">业务卡片系列</a>
+        </section>
+
+        <section>
+            <h2>业务卡片系列</h2>
+        </section>
+
+        <section>
+            <h2>购物专项</h2>
+        </section>
+
+        <section>
+            <h2>抢票专家</h2>
+        </section>
+
+        <section>
+            <h2>小说全搜</h2>
+        </section>
+
+        <section>
+            <h2>NAPI</h2>
+        </section>
+
+        <section>
+            <h2>国内视频</h2>
+        </section>
+
+        <section>
+            <h2>神马搜索</h2>
+        </section>
+
+        <section>
+            <h2>神马早知道</h2>
+        </section>
+
+        <section>
+            <h2>国际板球</h2>
+        </section>
+
+        <section>
+            <h2>世界杯</h2>
+        </section>
+
+        <section>
+            <h2>NBA</h2>
+        </section>
+
+        <section>
+            <h2>酷影模式</h2>
+        </section>
+
+        <section>
+            <h2>奇趣百科</h2>
+        </section>
+
+        <section>
+            <h2>伙伴名系列</h2>
+        </section>
+
+        <section>
+            <h2>钱汝锋</h2>
+        </section>
+
+        <section>
+            <h2>林蓬蓬</h2>
+        </section>
+
+        <section>
+            <h2>陈凯成</h2>
+        </section>
+
+        <section>
+            <h2>关开设</h2>
+        </section>
+
+        <section>
+            <h2>林子杰</h2>
+        </section>
+
+        <section>
+            <h2>刘洋</h2>
+        </section>
+
+        <section>
+            <h2>张云龙</h2>
+        </section>
+
+        <section>
+            <h2>郑炜飚</h2>
+        </section>
+
+        <section>
+            <h2>何茹茹</h2>
+        </section>
+
+        <section>
+            <h2>罗芬</h2>
+        </section>
+
+        <section>
+            <h2>组织架构系列</h2>
+        </section>
+
+        <section>
+            <h2>总裁室</h2>
+        </section>
+
+        <section>
+            <h2>总裁办</h2>
+        </section>
+
+        <section>
+            <h2>国际业务部</h2>
+        </section>
+
+        <section>
+            <h2>浏览器研发部</h2>
+        </section>
+
+        <section>
+            <h2>浏览器应用业务部</h2>
+        </section>
+    </div>
+</div>
+
+<!--     <div class="mux-logo">
+    <img src="http://gtms01.alicdn.com/tps/i1/T1PY5OFBXdXXcMmhDl-216-94.png" alt="">
+</div> -->
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
+<script>
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        mouseWheel: false,
+        keyboard: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            {
+                src: 'lib/js/classList.js',
+                condition: function () {
+                    return !document.body.classList;
+                }
+            },
+            {
+                src: 'plugin/markdown/marked.js',
+                condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            },
+            {
+                src: 'plugin/markdown/markdown.js',
+                condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            },
+            {
+                src: 'plugin/highlight/highlight.js',
+                async: true,
+                callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            },
+            {
+                src: 'plugin/zoom-js/zoom.js',
+                async: true,
+                condition: function () {
+                    return !!document.body.classList;
+                }
+            },
+            {
+                src: 'plugin/notes/notes.js',
+                async: true,
+                condition: function () {
+                    return !!document.body.classList;
+                }
+            }
+        ]
+    });
+
+    $('canvas').on('click', function () {
+        socket.emit('clear');
+    });
+</script>
+</body>
+
+</html>
