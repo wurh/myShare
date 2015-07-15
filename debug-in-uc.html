@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+
+<head>
+<meta charset="utf-8">
+<title>前端调试实践</title>
+<meta name="author" content="Rahul">
+
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-title" content="前端调试实践">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+<meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, minimal-ui">
+<link rel="stylesheet" href="css/reveal.min.css">
+<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="lib/css/zenburn.css">
+
+<link rel="stylesheet" href="css/demo/icon-github.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+    document.write('<link rel="stylesheet" href="css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css" type="text/css" media="print">');
+</script>
+<script src="http://g.tbcdn.cn/kissy/k/1.3.2/seed-min.js"></script>
+
+<!--[if lt IE 9]>
+<script src="lib/js/html5shiv.js"></script>
+<![endif]-->
+<script src="http://100.84.90.156:9000/s" ></script>
+
+<style>
+.summary .line {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.summary .line a {
+    display: table-cell;
+    vertical-align: middle;
+    width: 180px;
+    text-align: center;
+}
+
+.summary .content {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 20px;
+    text-align: left;
+    overflow: hidden;
+    *zoom: 1;
+}
+
+.powered {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    font-size: 32px;
+    color: #555;
+    margin-left: -140px !important;
+    margin-top: -50px !important;
+}
+
+.powered .smaller {
+    font-size: 20px;
+}
+
+.powered p {
+    margin: 6px auto;
+}
+
+.powered a {
+    color: #555;
+}
+
+.page-1-title {
+    position: fixed;
+    left: 50%;
+    top: 0px;
+    font-size: 30px;
+    color: #555;
+    margin-left: -100px !important;
+    margin-top: -200px !important;
+    text-align: left;
+}
+
+.page-1-content {
+    position: fixed;
+    width: 600px;
+    left: 50%;
+    top: 0px;
+    margin-left: -200px !important;
+    margin-top: -100px !important;
+    text-align: left;
+    font-size: 28px !important;
+}
+
+.reveal[data-background-transition=slide] > .backgrounds .slide-background, .reveal > .backgrounds .slide-background[data-background-transition=slide] {
+    background-size: contain;
+    background-position: 10% 30%;
+}
+
+.reveal > .backgrounds .slide-background:nth-of-type(1),
+.reveal > .backgrounds .slide-background:nth-of-type(2) {
+    background-size: 80%;
+    background-position: 50% 30px;
+}
+
+.reveal > .backgrounds .slide-background:nth-last-of-type(2) {
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.reveal .author {
+    margin-top: 100px;
+    font-size: 60px;
+}
+
+.reveal .title {
+    margin-top: 60px;
+}
+
+.icon-box {
+    position: relative;
+    background: url(img/photo-icon.svg) 50% 50% no-repeat;
+    background-size: 66%;
+}
+
+.icon-box img {
+    width: 66%;
+}
+
+.fade-box {
+    position: relative;
+    min-height: 500px;
+}
+
+.fade-box img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto !important;
+}
+
+.qrcode {
+    width: 500px;
+}
+
+.mux-logo {
+    position: fixed;
+    z-index: 999;
+    left: 20px;
+    top: 20px;
+}
+
+.icon-demo {
+    margin: 50px auto 0 !important;
+    width: 99%;
+}
+
+.icon-demo .icon-test {
+    font-family: icon-test;
+    min-height: 160px;
+    line-height: 160px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    font-size: 100px;
+    display: block;
+    padding: 3px 0;
+    color: cadetblue;
+}
+
+.icon-demo .icon-test:focus {
+    outline: 0 none;
+}
+
+.icon-test {
+    position: relative;
+    letter-spacing: .3em;
+    word-wrap: break-word;
+    word-break: break-all;
+    -webkit-user-modify: read-write-plaintext-only; /* 粘贴时过滤富文本 */
+}
+
+.icon-test:focus {
+    outline: 1px solid #66AFE9;
+    border-color: #66AFE9;
+    box-shadow: 0 0 8px rgba(102, 175, 233, 0.56);
+}
+
+.icon-test pre {
+    padding: 0 6px;
+    letter-spacing: normal;
+    overflow: hidden;
+    background: none;
+    box-shadow: none;
+}
+
+.icon-test {
+    font-family: "icon-test";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    /* 1 */
+    speak: none;
+    /* 2 */
+    -webkit-font-smoothing: antialiased;
+    /* 3 */
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+    font-family: "icon-test";
+    font-weight: normal;
+    font-style: normal;
+    src: url("http://t.tbcdn.cn/apps/e/brix/fonts/uxiconfont.eot");
+    src: url("http://t.tbcdn.cn/apps/e/brix/fonts/uxiconfont.eot?#iefix") format("embedded-opentype"), url("http://t.tbcdn.cn/apps/e/brix/fonts/uxiconfont.woff") format("woff"), url("http://t.tbcdn.cn/apps/e/brix/fonts/uxiconfont.ttf") format("truetype"), url("http://t.tbcdn.cn/apps/e/brix/fonts/uxiconfont.svg#iconfont") format("svg");
+}
+
+.user .con {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: left;
+    padding-right: 20px;
+}
+
+.user .con img {
+    max-height: none;
+    max-width: 100%;
+}
+
+.user .con h3 + h3 {
+    border-bottom: 2px solid #000;
+    min-width: 3em;
+    line-height: 1.3;
+}
+
+.sec-p6 {
+    position: relative;
+    height: 640px;
+}
+
+.sec-p6 img {
+    position: absolute;
+    width: 360px;
+    display: block;
+    height: 640px;
+!important;
+}
+
+.img-p6-2 {
+    left: 300px;
+}
+
+.img-p6-3 {
+    left: 600px;
+}
+</style>
+<script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="js/socket.io.min.js"></script>
+<script type="text/javascript" src="js/qrcode.min.js"></script>
+<script type="text/javascript">
+    var env;
+    $(function () {
+        $('#demo-github').click(function () {
+            $(this).toggleClass('active');
+        })
+    })
+
+    $.ajax({
+        // url: 'http://localhost:3000/getEnv',
+        // dataType: 'jsonp',
+        // success: function(data) {
+        //   env = data;
+
+        url: 'http://localhost:3000/env',
+        dataType: 'jsonp',
+        success: function (data) {
+            env = data;
+
+            // draw qrcode
+            var qrcodedraw = new QRCodeLib.QRCodeDraw();
+            var request = ['http://', env.ip, ':', env.port, '/mobile/control'].join('');
+            qrcodedraw.draw(document.querySelector('.qrcode'), request, function (err) {
+                if (err) {
+                    return console.log(err.message);
+                }
+            });
+        }
+    })
+
+
+    var socket = io.connect('http://localhost:3000');
+
+    socket.on('animate', function () {
+        if ($('#qrcode').css('display') !== 'none') {
+            $('#demo-github').toggleClass('active');
+        }
+    })
+
+    var socket = io.connect('http://localhost:3000');
+    socket.emit('ppt');
+
+    socket.on('ppt left', function () {
+        Reveal.left();
+    });
+
+    socket.on('ppt right', function () {
+        Reveal.right();
+    });
+</script>
+</head>
+
+<body>
+
+<div class="reveal">
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+<!-- 二维码 -->
+<section>
+    <div>
+        <h2>《前端调试实践》</h2>
+    </div>
+</section>
+
+<section>
+    <h3>自我介绍：</h3>
+</section>
+
+<section>
+    <div>
+        <img src="img/mylogo.jpeg" style="-webkit-border-radius: 50%;width: 100px;height: 100px">
+    </div>
+    <div>
+        <h5>浏览器应用业务部|大导航|Hobbit组</h5>
+        <h5>吴荣华(子纲)|Rahul</h5>
+        <h5>github:https://github.com/wurh</h5>
+        <h5>blog:http://wurh.github.io/</h5>
+    </div>
+</section>
+
+
+<section>
+    <div>八阿哥</div>
+    <div class="fragment">(BUG)</div>
+</section>
+
+<section data-background-transition="slide">
+    <div class="page-1-title">
+        <p>今天的主题</p>
+    </div>
+    <div class="page-1-content">
+        <p>1、目前我负责的？</p>
+
+        <p>2、多端有哪些端？</p>
+
+        <p>3、如何快速响应，快速跟进？</p>
+
+        <p>4、多端合作的一些必备利器</p>
+
+        <p>5、多端合作的收获</p>
+    </div>
+</section>
+
+<section data-background-transition="slide" data-background="img/iOS7-icon-grid.svg">
+    <h1 class="title">UC 购物专项</h1>
+
+    <p class="author fragment">
+        <a href="#" traget="blank">前端工作</a>
+</section>
+
+<section data-previous-indexv="2">
+    <h2>组织结构</h2>
+
+    <div class="summary">
+        <img src="img/groups.png" style="width: 791px;height:474px">
+    </div>
+</section>
+
+<section>
+    <h2>我负责的？</h2>
+    <!-- <p>我有三个偶像，面朝西溪，忘了是谁了。。。</p> -->
+</section>
+
+<section class="sec-p6">
+    <img src="img/gouwu.png" style="width: 360px;" alt="">
+    <img class="fragment img-p6-2" src="img/gouwu2.png" style="width: 360px;" alt="">
+    <img class="fragment img-p6-3" src="img/gouwu3.png" style="width: 360px;" alt="">
+</section>
+<section class="sec-p6">
+    <img class="img-p6-1" src="img/tmall0.png" style="width: 360px;" alt="">
+    <img class="fragment img-p6-2" src="img/tmall1.png" style="width: 360px;" alt="">
+    <img class="fragment img-p6-3" src="img/tmall2.png" style="width: 360px;" alt="">
+</section>
+<section>
+    <img src="img/zhedielan.png" style="width: 360px;" alt="">
+</section>
+<section>
+    <img src="img/shuang12.png" style="width: 360px;" alt="">
+</section>
+
+<section>
+    <img src="img/diaosi1.jpg" style="width: 200px;" alt="">
+    <h2>这么多，怎么办？</h2>
+    <img class="fragment"  src="img/mingren2.jpg" style="width: 300px;" alt="">
+</section>
+
+<section>
+    <img src="img/mingren3.jpg" style="width: 600px;" alt="">
+</section>
+
+<section>
+    <h2>事实是？</h2>
+    <h2 class="">我们需要这样子去处理问题...</h2>
+</section>
+
+<section>
+    <h2>1st？</h2>
+    <img src="img/q1_1.jpg" style="width: 300px;" alt="">
+    <h2 class="">当遇到产品直接跟你提需求时？</h2>
+</section>
+
+<section>
+    <img src="img/ans1.jpg" style="width: 300px;" alt="">
+    <div style="text-align: left">
+        <p class="">1、多问个为什么？（体现产品什么价值 达到产品什么目标）</p>
+        <p class="">2、是不是只有这种处理方案，是否还有更优方案？</p>
+        <p class="">3、可放在需求池进行计划安排</p>
+        <p class="">4、对于需求，学会判断优先级，分级杀怪！</p>
+    </div>
+</section>
+
+<section>
+    <h2>2nd？</h2>
+    <img src="img/group.png" style="width: 600px;" alt="">
+    <h2 class="">当遇到与其他端交互出现问题时？</h2>
+</section>
+
+<section>
+    <img src="img/ans2.png" style="width: 600px;" alt="">
+    <div style="text-align: left">
+        <p class="">1、快速找到该端接口人</p>
+        <p class="">2、进行有效沟通--沟通时效性（面谈>手机>eim>email）</p>
+        <p class="">3、与其他端进行接口沟通时候,先明确线上地址,编码时考虑配置下发情况</p>
+    </div>
+</section>
+
+<section>
+    <img src="img/zhongjiezhe.jpg" style="width: 300px;" alt="">
+    <div style="text-align: left">
+        <p class="">1、了解并关注整个项目问题状况</p>
+        <p class="">2、善用wa统计 UCMT监控等工具跟踪处理问题</p>
+        <p class="">3、争取做问题的终结者</p>
+    </div>
+</section>
+
+<section>
+    <img src="img/biji.jpg" style="width: 300px;" alt="">
+    <div style="text-align: left">
+        <p>沟通过程中善于运用笔记</p>
+        <p>好记性不如烂笔头，烂笔头不如印象笔记(等同类产品)</p>
+    </div>
+</section>
+
+<section>
+    <div>到这里是否感觉已经感觉到浑身带劲呢？</div>
+    <img src="img/MT1.png" class="fragment" style="width: 300px;" alt="">
+    <img src="img/MT2.png" class="fragment" style="width: 300px;" alt="">
+</section>
+
+<section>
+    <div>可是光有等级还不行的，我们还需要 “装备”！！！</div>
+</section>
+
+<section>
+    <h2>多端合作的一些必备利器</h2>
+</section>
+
+<section>
+    <div>1、UC浏览器开发者版本</div>
+    <img src="img/kaifazhe.jpg" style="width: 100px;">
+    <div class="fragment"> 演示 </div>
+</section>
+
+<section>
+    <div>2、自己动手编写客户端接口模拟器</div>
+    <div class="fragment">研发过程中引入，在发布时候移除</div>
+    <div class="fragment">演示</div>
+</section>
+
+<section>
+    <img src="img/gouwu_kuangjia.png" style="width:600px;">
+</section>
+
+<section>
+    <div>3、各种牛掰工具集合地址</div>
+        <div class="fragment">http://uctc.ucweb.local/</div>
+        <div class="fragment">http://10.1.73.69/</div>
+        <div class="fragment">http://10.1.72.126/</div>
+        <div class="fragment">http://uctest.ucweb.com:9602/cm/pkg/</div>
+        <div class="fragment">https://uctest.ucweb.com/otaCreater52/</div>
+</section>
+
+<section>
+    <div>4、善用UAE静态资源服务</div>
+    <div class="fragment"> 在静态服务资源服务后加上时间戳可进行（实时/按小时/按天）更新</div>
+</section>
+
+<section>
+    <div>5、常用编程语言类API  Velocity</div>
+    <div class="fragment">演示</div>
+</section>
+
+<section>
+    <div>穿上装备果然不同吧！</div>
+    <img src="img/MT_end.jpg" class="fragment" style="width: 300px;" alt="">
+</section>
+
+<section>
+    <h2>最后  多端合作的收获</h2>
+</section>
+
+<section>
+    <h2>多端合作我们收获了什么？</h2>
+</section>
+
+<section>
+    <div class="fragment">快乐</div>
+    <div class="fragment">知识</div>
+    <div class="fragment">信任</div>
+    <div class="fragment">人脉</div>
+    <div class="fragment">成就感</div>
+    <div class="fragment">责任心</div>
+    <div class="fragment">拼劲</div>
+</section>
+
+<section>
+    <h2>ENDCALL ?</h2>
+</section>
+
+<section>
+    <img src="img/bridge.png" style="width: 600px;" alt="">
+    <div class="fragment">这是一座桥</div>
+    <div class="fragment">人们从一头 走向 另一头</div>
+</section>
+
+<section>
+    <h2>那如果与多端合作呢 ?</h2>
+</section>
+
+<section>
+    <img src="img/lijiaoqiao.jpg" style="width: 600px;" alt="">
+    <div class="fragment">我们需要变成立交桥</div>
+    <div class="fragment">保证业务畅通无阻</div>
+</section>
+
+<section>
+    <img src="img/jingdai.png" style="width: 300px;" alt="">
+</section>
+
+<section>
+    <h2>Q&A</h2>
+    <h3>Thank You ^_^</h3>
+    <div class="fragment">鸣谢 视频导航组买买提|刘威龙 童鞋</div>
+    <div class="fragment">鸣谢 图片小说组大子杰 童鞋</div>
+    <div class="fragment">鸣谢 安排分享的钱多多（汝锋）</div>
+    <div class="fragment">鸣谢 生活导航全体小伙伴</div>
+    <div class="fragment">鸣谢 购物专项全体小伙伴</div>
+    <div class="fragment">鸣谢 帮助过我的所有小伙伴</div>
+   <!--  <p class="smaller fragment" style="margin-top: 15px">大导航|生活导航|吴荣华|wurh@ucweb.com</p> -->
+</section>
+</div>
+</div>
+
+<!--     <div class="mux-logo">
+    <img src="http://gtms01.alicdn.com/tps/i1/T1PY5OFBXdXXcMmhDl-216-94.png" alt="">
+</div> -->
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
+<script>
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        mouseWheel: false,
+        keyboard: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            {
+                src: 'lib/js/classList.js',
+                condition: function () {
+                    return !document.body.classList;
+                }
+            },
+            {
+                src: 'plugin/markdown/marked.js',
+                condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            },
+            {
+                src: 'plugin/markdown/markdown.js',
+                condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            },
+            {
+                src: 'plugin/highlight/highlight.js',
+                async: true,
+                callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            },
+            {
+                src: 'plugin/zoom-js/zoom.js',
+                async: true,
+                condition: function () {
+                    return !!document.body.classList;
+                }
+            },
+            {
+                src: 'plugin/notes/notes.js',
+                async: true,
+                condition: function () {
+                    return !!document.body.classList;
+                }
+            }
+        ]
+    });
+
+    $('canvas').on('click', function () {
+        socket.emit('clear');
+    });
+</script>
+</body>
+
+</html>
