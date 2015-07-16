@@ -361,13 +361,61 @@
             <div>1.调试代码</div>
         </section>
         <section>
+            <div>
+                <img src="img/medish.jpg">
+            </div>
+        </section>
+        <section>
             <div>2.网络监控与调优Network</div>
         </section>
         <section>
+            <div style="font-size: 20px">Network网络面板是基于Resource Timing API来获取每个请求的耗时细节的</div>
+            <div style="font-size: 20px">API提供面向一次HTTP请求所收集的各个时刻点的数据</div>
+            <div><img src="img/network.png"></div>
+        </section>
+        <section>
+            <div style="font-size: 20px">在chorme中，network 面板</div>
+            <img src="img/nfp8.png">
+        </section>
+        <section>
+            <div style="font-size: 20px">在chorme中，我们也可以通过window.perfomance.getEntries()来查看请求耗时数据</div>
+            <div><img src="img/nfp7.png"></div>
+        </section>
+        <section>
             <div>3.性能分析Timeline</div>
+            <div>
+                <img src="img/nfp9.png">
+            </div>
+            <div style="font-size: 16px">页面的每一帧内容都是GPU绘制出来的,它的最高绘制频率受限于显示器的刷新频率,大多数情况下最高的绘制平率只能是每秒60帧(frames per second, 即fps),对应于显示器的60Hz.因此在页面性能的测试中, 60fps是一个非常重要的指标,越接近越好.</div>
+            <div style="font-size: 16px">如果出现偏向于30fps，就说明GPU渲染画面频率降低，出现掉帧</div>
+        </section>
+        <section>
+            <div style="font-size: 16px">内存视图会通过一个图表显示您的页面随着时间的推移所使用的内存，你可以查看每个时间段的内存使用量，并找出性能问题</div>
+            <div>
+                <img src="img/nfp10.png">
+            </div>
         </section>
         <section>
             <div>4.内存分析Profiles</div>
+        </section>
+        <section>
+            <div>
+                <img src="img/nfp12.png">
+            </div>
+        </section>
+        <section>
+            <div>
+                <img src="img/nfp13.png">
+            </div>
+        </section>
+        <section>
+            <div>Shallow Size</div>
+            <div style="font-size: 20px">对象自身占用的内存大小，不包括它引用的对象。</div>
+        </section>
+        <section>
+            <div>Retained Size</div>
+            <div style="font-size: 20px">该对象被GC之后所能回收到内存的总和</div>
+            <div style="font-size: 20px">不过，释放的时候还要排除被GC Roots直接或间接引用的对象.</div>
         </section>
         <section>
             <div>5.结合UC浏览器开发者版本调试</div>
@@ -399,6 +447,7 @@
         <section data-background-transition="slide">
             <h3>2、Node-profiler 的使用</h3>
         </section>
+
         <section>
             <div>Node Profiler 是什么？</div>
             <div class="fragment">Node Profiler是一款JavaScript的性能调优工具</div>
