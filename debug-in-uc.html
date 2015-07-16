@@ -28,7 +28,7 @@
 <!--[if lt IE 9]>
 <script src="lib/js/html5shiv.js"></script>
 <![endif]-->
-<script src="http://100.84.90.156:9000/s" ></script>
+<script src="http://100.84.90.156:9000/s"></script>
 
 <style>
 .summary .line {
@@ -316,262 +316,136 @@
 <body>
 
 <div class="reveal">
-<!-- Any section element inside of this container is displayed as a slide -->
-<div class="slides">
-<!-- 二维码 -->
-<section>
-    <div>
-        <h2>《前端调试实践》</h2>
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <!-- 二维码 -->
+        <section>
+            <h1 class="title">前端调试实践</h1>
+        </section>
+
+        <section>
+            <h3>自我介绍：</h3>
+        </section>
+
+        <section>
+            <div>
+                <img src="img/mylogo.jpeg" style="-webkit-border-radius: 50%;width: 200px;height: 200px">
+            </div>
+            <div>Rahul Wu</div>
+            <div>吴荣华（子纲）</div>
+            <div><span style="color: orange">大导航</span></div>
+            <div>
+                <h5>GitHub <span style="color: orange">@wurh</span></h5>
+                <h5>blog <span style="color: orange">wurh.github.io</span></h5>
+            </div>
+        </section>
+
+        <section data-background-transition="slide">
+            <div class="page-1-title">
+                <p>今天的主题</p>
+            </div>
+            <div class="page-1-content">
+                <p>1、前端研发过程中的调试</p>
+
+                <p>2、Node 服务端研发过程中的调试</p>
+            </div>
+        </section>
+
+        <section data-background-transition="slide">
+            <h3>前端研发过程中的调试</h3>
+        </section>
+        <section>
+            <div>Chrome DevTools</div>
+        </section>
+        <section>
+            <div>1.调试代码</div>
+        </section>
+        <section>
+            <div>2.网络监控与调优Network</div>
+        </section>
+        <section>
+            <div>3.性能分析Timeline</div>
+        </section>
+        <section>
+            <div>4.内存分析Profiles</div>
+        </section>
+        <section>
+            <div>5.结合UC浏览器开发者版本调试</div>
+        </section>
+        <section data-background-transition="slide">
+            <h3>Node 服务端研发过程中的调试</h3>
+        </section>
+        <section data-background-transition="slide">
+            <h3>1、Node-inspector 的使用</h3>
+        </section>
+        <section>
+            <div>npm install node-inspector -g 进行安装</div>
+            <div class="fragment">node —debug-brk app.js</div>
+            <div class="fragment">启动node-inspector</div>
+        </section>
+        <section>
+            <div>操作顺序</div>
+            <div class="fragment">
+                <img src="img/inp1.png">
+            </div>
+            <div class="fragment">
+                <img src="img/inp2.png">
+            </div>
+        </section>
+        <section>
+            <div>展开如chrome dev tool的debug页面</div>
+            <img src="img/inp3.png">
+        </section>
+        <section data-background-transition="slide">
+            <h3>2、Node-profiler 的使用</h3>
+        </section>
+        <section>
+            <div>Node Profiler 是什么？</div>
+            <div class="fragment">Node Profiler是一款JavaScript的性能调优工具</div>
+            <div class="fragment">它不仅知道您的哪些代码慢，还知道为什么慢，能更深度地洞悉性能问题所在</div>
+        </section>
+        <section>
+            <div>V8 引擎</div>
+            <div class="fragment">V8是一个Javascript 语言的执行引擎</div>
+            <div class="fragment">V8是JIT的方式执行Javascript代码，JS直接编译成机器码然后执行</div>
+            <div class="fragment">V8对Javascript的处理是以函数为单位</div>
+        </section>
+        <section>
+            <div>安装 Node-profiler</div>
+            <div class="fragment">地址:http://alinode.aliyun.com/</div>
+            <div class="fragment">使用node-profiler 启动server</div>
+        </section>
+        <section>
+            <div>
+               <img src="img/nfp1.png">
+            </div>
+            <div class="fragment">
+                <img src="img/nfp2.png">
+            </div>
+            <div class="fragment">
+                <img src="img/nfp4.png">
+            </div>
+        </section>
+        <section>
+            <div>
+                <img src="img/nfp3.png">
+            </div>
+            <div class="fragment">
+                <img src="img/nfp5.png">
+            </div>
+        </section>
+        <section>
+            <div><img src="img/nfp6.png"></div>
+            <div>Bailout案例</div>
+            <div>https://github.com/ali-sdk/node-profiler/wiki/Bailout%E6%A1%88%E4%BE%8B#forinstatement-is-not-fast-case</div>
+        </section>
+        <section>
+            <div>注意事项：</div>
+            <div>Node Profiler 仅对Node(v8)有效</div>
+            <div>Node Profiler 仅对CPU层面做优化分析，系统性能跟很多其他因素相关</div>
+            <div>只能用于开发环境，不能用于生产环境</div>
+        </section>
     </div>
-</section>
-
-<section>
-    <h3>自我介绍：</h3>
-</section>
-
-<section>
-    <div>
-        <img src="img/mylogo.jpeg" style="-webkit-border-radius: 50%;width: 100px;height: 100px">
-    </div>
-    <div>
-        <h5>浏览器应用业务部|大导航|Hobbit组</h5>
-        <h5>吴荣华(子纲)|Rahul</h5>
-        <h5>github:https://github.com/wurh</h5>
-        <h5>blog:http://wurh.github.io/</h5>
-    </div>
-</section>
-
-
-<section>
-    <div>八阿哥</div>
-    <div class="fragment">(BUG)</div>
-</section>
-
-<section data-background-transition="slide">
-    <div class="page-1-title">
-        <p>今天的主题</p>
-    </div>
-    <div class="page-1-content">
-        <p>1、目前我负责的？</p>
-
-        <p>2、多端有哪些端？</p>
-
-        <p>3、如何快速响应，快速跟进？</p>
-
-        <p>4、多端合作的一些必备利器</p>
-
-        <p>5、多端合作的收获</p>
-    </div>
-</section>
-
-<section data-background-transition="slide" data-background="img/iOS7-icon-grid.svg">
-    <h1 class="title">UC 购物专项</h1>
-
-    <p class="author fragment">
-        <a href="#" traget="blank">前端工作</a>
-</section>
-
-<section data-previous-indexv="2">
-    <h2>组织结构</h2>
-
-    <div class="summary">
-        <img src="img/groups.png" style="width: 791px;height:474px">
-    </div>
-</section>
-
-<section>
-    <h2>我负责的？</h2>
-    <!-- <p>我有三个偶像，面朝西溪，忘了是谁了。。。</p> -->
-</section>
-
-<section class="sec-p6">
-    <img src="img/gouwu.png" style="width: 360px;" alt="">
-    <img class="fragment img-p6-2" src="img/gouwu2.png" style="width: 360px;" alt="">
-    <img class="fragment img-p6-3" src="img/gouwu3.png" style="width: 360px;" alt="">
-</section>
-<section class="sec-p6">
-    <img class="img-p6-1" src="img/tmall0.png" style="width: 360px;" alt="">
-    <img class="fragment img-p6-2" src="img/tmall1.png" style="width: 360px;" alt="">
-    <img class="fragment img-p6-3" src="img/tmall2.png" style="width: 360px;" alt="">
-</section>
-<section>
-    <img src="img/zhedielan.png" style="width: 360px;" alt="">
-</section>
-<section>
-    <img src="img/shuang12.png" style="width: 360px;" alt="">
-</section>
-
-<section>
-    <img src="img/diaosi1.jpg" style="width: 200px;" alt="">
-    <h2>这么多，怎么办？</h2>
-    <img class="fragment"  src="img/mingren2.jpg" style="width: 300px;" alt="">
-</section>
-
-<section>
-    <img src="img/mingren3.jpg" style="width: 600px;" alt="">
-</section>
-
-<section>
-    <h2>事实是？</h2>
-    <h2 class="">我们需要这样子去处理问题...</h2>
-</section>
-
-<section>
-    <h2>1st？</h2>
-    <img src="img/q1_1.jpg" style="width: 300px;" alt="">
-    <h2 class="">当遇到产品直接跟你提需求时？</h2>
-</section>
-
-<section>
-    <img src="img/ans1.jpg" style="width: 300px;" alt="">
-    <div style="text-align: left">
-        <p class="">1、多问个为什么？（体现产品什么价值 达到产品什么目标）</p>
-        <p class="">2、是不是只有这种处理方案，是否还有更优方案？</p>
-        <p class="">3、可放在需求池进行计划安排</p>
-        <p class="">4、对于需求，学会判断优先级，分级杀怪！</p>
-    </div>
-</section>
-
-<section>
-    <h2>2nd？</h2>
-    <img src="img/group.png" style="width: 600px;" alt="">
-    <h2 class="">当遇到与其他端交互出现问题时？</h2>
-</section>
-
-<section>
-    <img src="img/ans2.png" style="width: 600px;" alt="">
-    <div style="text-align: left">
-        <p class="">1、快速找到该端接口人</p>
-        <p class="">2、进行有效沟通--沟通时效性（面谈>手机>eim>email）</p>
-        <p class="">3、与其他端进行接口沟通时候,先明确线上地址,编码时考虑配置下发情况</p>
-    </div>
-</section>
-
-<section>
-    <img src="img/zhongjiezhe.jpg" style="width: 300px;" alt="">
-    <div style="text-align: left">
-        <p class="">1、了解并关注整个项目问题状况</p>
-        <p class="">2、善用wa统计 UCMT监控等工具跟踪处理问题</p>
-        <p class="">3、争取做问题的终结者</p>
-    </div>
-</section>
-
-<section>
-    <img src="img/biji.jpg" style="width: 300px;" alt="">
-    <div style="text-align: left">
-        <p>沟通过程中善于运用笔记</p>
-        <p>好记性不如烂笔头，烂笔头不如印象笔记(等同类产品)</p>
-    </div>
-</section>
-
-<section>
-    <div>到这里是否感觉已经感觉到浑身带劲呢？</div>
-    <img src="img/MT1.png" class="fragment" style="width: 300px;" alt="">
-    <img src="img/MT2.png" class="fragment" style="width: 300px;" alt="">
-</section>
-
-<section>
-    <div>可是光有等级还不行的，我们还需要 “装备”！！！</div>
-</section>
-
-<section>
-    <h2>多端合作的一些必备利器</h2>
-</section>
-
-<section>
-    <div>1、UC浏览器开发者版本</div>
-    <img src="img/kaifazhe.jpg" style="width: 100px;">
-    <div class="fragment"> 演示 </div>
-</section>
-
-<section>
-    <div>2、自己动手编写客户端接口模拟器</div>
-    <div class="fragment">研发过程中引入，在发布时候移除</div>
-    <div class="fragment">演示</div>
-</section>
-
-<section>
-    <img src="img/gouwu_kuangjia.png" style="width:600px;">
-</section>
-
-<section>
-    <div>3、各种牛掰工具集合地址</div>
-        <div class="fragment">http://uctc.ucweb.local/</div>
-        <div class="fragment">http://10.1.73.69/</div>
-        <div class="fragment">http://10.1.72.126/</div>
-        <div class="fragment">http://uctest.ucweb.com:9602/cm/pkg/</div>
-        <div class="fragment">https://uctest.ucweb.com/otaCreater52/</div>
-</section>
-
-<section>
-    <div>4、善用UAE静态资源服务</div>
-    <div class="fragment"> 在静态服务资源服务后加上时间戳可进行（实时/按小时/按天）更新</div>
-</section>
-
-<section>
-    <div>5、常用编程语言类API  Velocity</div>
-    <div class="fragment">演示</div>
-</section>
-
-<section>
-    <div>穿上装备果然不同吧！</div>
-    <img src="img/MT_end.jpg" class="fragment" style="width: 300px;" alt="">
-</section>
-
-<section>
-    <h2>最后  多端合作的收获</h2>
-</section>
-
-<section>
-    <h2>多端合作我们收获了什么？</h2>
-</section>
-
-<section>
-    <div class="fragment">快乐</div>
-    <div class="fragment">知识</div>
-    <div class="fragment">信任</div>
-    <div class="fragment">人脉</div>
-    <div class="fragment">成就感</div>
-    <div class="fragment">责任心</div>
-    <div class="fragment">拼劲</div>
-</section>
-
-<section>
-    <h2>ENDCALL ?</h2>
-</section>
-
-<section>
-    <img src="img/bridge.png" style="width: 600px;" alt="">
-    <div class="fragment">这是一座桥</div>
-    <div class="fragment">人们从一头 走向 另一头</div>
-</section>
-
-<section>
-    <h2>那如果与多端合作呢 ?</h2>
-</section>
-
-<section>
-    <img src="img/lijiaoqiao.jpg" style="width: 600px;" alt="">
-    <div class="fragment">我们需要变成立交桥</div>
-    <div class="fragment">保证业务畅通无阻</div>
-</section>
-
-<section>
-    <img src="img/jingdai.png" style="width: 300px;" alt="">
-</section>
-
-<section>
-    <h2>Q&A</h2>
-    <h3>Thank You ^_^</h3>
-    <div class="fragment">鸣谢 视频导航组买买提|刘威龙 童鞋</div>
-    <div class="fragment">鸣谢 图片小说组大子杰 童鞋</div>
-    <div class="fragment">鸣谢 安排分享的钱多多（汝锋）</div>
-    <div class="fragment">鸣谢 生活导航全体小伙伴</div>
-    <div class="fragment">鸣谢 购物专项全体小伙伴</div>
-    <div class="fragment">鸣谢 帮助过我的所有小伙伴</div>
-   <!--  <p class="smaller fragment" style="margin-top: 15px">大导航|生活导航|吴荣华|wurh@ucweb.com</p> -->
-</section>
-</div>
 </div>
 
 <!--     <div class="mux-logo">
