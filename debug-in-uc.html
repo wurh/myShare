@@ -338,23 +338,27 @@
                 <h5>blog <span style="color: orange">wurh.github.io</span></h5>
             </div>
         </section>
-
+        <section>
+            <div><p>前端性能优化是个比较大的议题，本次分享主要是针对前端性能优化上使用到的工具分析进行分享与讨论</p></div>
+        </section>
         <section data-background-transition="slide">
             <div class="page-1-title">
                 <p>今天的主题</p>
             </div>
             <div class="page-1-content">
-                <p>1、前端研发过程中的性能调优</p>
+                <p>1、前端方面的性能调优</p>
 
-                <p>2、Node 服务端研发过程中的性能调优</p>
+                <p>2、网络上的性能调优</p>
+
+                <p>3、服务端上的性能调优(Node.js)</p>
             </div>
         </section>
 
         <section data-background-transition="slide">
-            <h3>前端研发过程中的性能调优</h3>
+            <h3>前端方面的性能调优</h3>
         </section>
         <section>
-            <div>Chrome DevTools</div>
+            <div>主要通过 Chrome DevTools 进行</div>
         </section>
         <section>
             <div>1.调试代码</div>
@@ -365,28 +369,12 @@
             </div>
         </section>
         <section>
-            <div>2.网络监控与调优Network</div>
-        </section>
-        <section>
-            <div style="font-size: 20px">Network网络面板是基于Resource Timing API来获取每个请求的耗时细节的</div>
-            <div style="font-size: 20px">API提供面向一次HTTP请求所收集的各个时刻点的数据</div>
-            <div><img src="img/network.png"></div>
-        </section>
-        <section>
-            <div style="font-size: 20px">在chorme中，network 面板</div>
-            <img src="img/nfp8.png">
-        </section>
-        <section>
-            <div style="font-size: 20px">在chorme中，我们也可以通过window.perfomance.getEntries()来查看请求耗时数据</div>
-            <div><img src="img/nfp7.png"></div>
-        </section>
-        <section>
-            <div>3.性能分析Timeline</div>
+            <div>2.性能分析Timeline</div>
             <div>
                 <img src="img/nfp9.png">
             </div>
-            <div style="font-size: 16px">页面的每一帧内容都是GPU绘制出来的,它的最高绘制频率受限于显示器的刷新频率,大多数情况下最高的绘制平率只能是每秒60帧(frames per second, 即fps),对应于显示器的60Hz.因此在页面性能的测试中, 60fps是一个非常重要的指标,越接近越好.</div>
-            <div style="font-size: 16px">如果出现偏向于30fps，就说明GPU渲染画面频率降低，出现掉帧</div>
+            <div style="font-size: 16px;text-align: left" >1、页面的每一帧内容都是GPU绘制出来的,它的最高绘制频率受限于显示器的刷新频率,大多数情况下最高的绘制平率只能是每秒60帧(frames per second, 即fps),对应于显示器的60Hz.因此在页面性能的测试中, 60fps是一个非常重要的指标,越接近越好.</div>
+            <div style="font-size: 16px;text-align: left" >2、如果出现偏向于30fps，就说明GPU渲染画面频率降低，出现掉帧</div>
         </section>
         <section>
             <div style="font-size: 16px">内存视图会通过一个图表显示您的页面随着时间的推移所使用的内存，你可以查看每个时间段的内存使用量，并找出性能问题</div>
@@ -395,7 +383,7 @@
             </div>
         </section>
         <section>
-            <div>4.内存分析Profiles</div>
+            <div>3.内存分析Profiles</div>
         </section>
         <section>
             <div>
@@ -416,8 +404,37 @@
             <div style="font-size: 20px">该对象被GC之后所能回收到内存的总和</div>
             <div style="font-size: 20px">不过，释放的时候还要排除被GC Roots直接或间接引用的对象.</div>
         </section>
+        <!-- 前端性能分析End-->
+        <section data-background-transition="slide">
+            <h3>网络层面上的性能调优</h3>
+        </section>
         <section>
-            <div>5.结合UC浏览器开发者版本调试</div>
+            <div>1.chrome dev tool网络监控与调优Network</div>
+        </section>
+        <section>
+            <div style="font-size: 20px">在chorme中，network 面板</div>
+            <img src="img/nfp8.png">
+        </section>
+        <section>
+            <div style="font-size: 20px">Network网络面板是基于Resource Timing API来获取每个请求的耗时细节的</div>
+            <div style="font-size: 20px">API提供面向一次HTTP请求所收集的各个时刻点的数据</div>
+            <div><img src="img/network.png"></div>
+        </section>
+        <section>
+            <div style="font-size: 20px">在chorme中，我们也可以通过window.perfomance.getEntries()来查看请求耗时数据</div>
+            <div><img src="img/nfp7.png"></div>
+        </section>
+        <section>
+            <div>2.Fiddler 与 Charles 网络代理工具进行调优</div>
+        </section>
+        <section>
+            <img src="img/fiddler_banner.png"/>
+        </section>
+        <section>
+            <img src="img/charles_banner.png"/>
+        </section>
+        <section>
+            <img src="img/charles_banner.png"/>
         </section>
         <section data-background-transition="slide">
             <h3>Node 服务端研发过程中的调试</h3>
@@ -426,7 +443,7 @@
             <h3>1、Node-inspector 的使用</h3>
         </section>
         <section>
-            <div>npm install node-inspector -g 进行安装</div>
+            <div >npm install node-inspector -g 进行安装</div>
             <div class="fragment">node —debug-brk app.js</div>
             <div class="fragment">启动node-inspector</div>
         </section>
@@ -449,14 +466,14 @@
 
         <section>
             <div>Node Profiler 是什么？</div>
-            <div class="fragment">Node Profiler是一款JavaScript的性能调优工具</div>
-            <div class="fragment">它不仅知道您的哪些代码慢，还知道为什么慢，能更深度地洞悉性能问题所在</div>
+            <div class="fragment" style="text-align: left">1、Node Profiler是一款JavaScript的性能调优工具</div>
+            <div class="fragment" style="text-align: left">2、它不仅知道您的哪些代码慢，还知道为什么慢，能更深度地洞悉性能问题所在</div>
         </section>
         <section>
             <div>V8 引擎</div>
-            <div class="fragment">V8是一个Javascript 语言的执行引擎</div>
-            <div class="fragment">V8是JIT的方式执行Javascript代码，JS直接编译成机器码然后执行</div>
-            <div class="fragment">V8对Javascript的处理是以函数为单位</div>
+            <div class="fragment" style="text-align: left">1、V8是一个Javascript 语言的执行引擎</div>
+            <div class="fragment" style="text-align: left">2、V8是JIT的方式执行Javascript代码，JS直接编译成机器码然后执行</div>
+            <div class="fragment" style="text-align: left">3、V8对Javascript的处理是以函数为单位</div>
         </section>
         <section>
             <div>安装 Node-profiler</div>
@@ -495,12 +512,12 @@
         </section>
         <section>
             <div>当然这仅仅只是调试优化的小小一部分</div>
-            <div>如果我们想更深刻的了解我们的站点应用情况，建议...</div>
+            <div>如果我们想更深刻的了解我们的站点应用性能情况，建议...</div>
         </section>
         <section>
-            <div>接入UAE 应用,利用uae 发现功能 跟踪站点服务健康情况</div>
-            <div>接入wa 应用，对性能数据和错误信息进行打点统计</div>
-            <div>接入UCMT 或者 NTS 进行站点监控，如有异常可进行报警</div>
+            <div style="text-align: left">a、接入UAE 应用,利用uae 发现功能 跟踪站点服务健康情况</div>
+            <div style="text-align: left">b、接入WA 应用，对性能数据和错误信息进行打点统计</div>
+            <div style="text-align: left">c、接入UCMT 进行站点监控，如有异常可进行报警</div>
         </section>
         <section>
             <h2>Q&A</h2>
