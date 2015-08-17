@@ -2,314 +2,314 @@
 <html lang="zh-cmn-Hans">
 
 <head>
-<meta charset="utf-8">
-<title>性能调优实践</title>
-<meta name="author" content="Rahul">
+    <meta charset="utf-8">
+    <title>性能调优实践</title>
+    <meta name="author" content="Rahul">
 
-<meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-title" content="性能调优实践">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-title" content="性能调优实践">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 
-<meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, minimal-ui">
-<link rel="stylesheet" href="css/reveal.min.css">
-<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, minimal-ui">
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/sky.css" id="theme">
 
-<!-- For syntax highlighting -->
-<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
 
-<link rel="stylesheet" href="css/demo/icon-github.css">
+    <link rel="stylesheet" href="css/demo/icon-github.css">
 
-<!-- If the query includes 'print-pdf', use the PDF print sheet -->
-<script>
-    document.write('<link rel="stylesheet" href="css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css" type="text/css" media="print">');
-</script>
-<script src="http://g.tbcdn.cn/kissy/k/1.3.2/seed-min.js"></script>
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+        document.write('<link rel="stylesheet" href="css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css" type="text/css" media="print">');
+    </script>
+    <script src="http://g.tbcdn.cn/kissy/k/1.3.2/seed-min.js"></script>
 
-<!--[if lt IE 9]>
-<script src="lib/js/html5shiv.js"></script>
-<![endif]-->
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
 
-<style>
-.summary .line {
-    overflow: hidden;
-    white-space: nowrap;
-}
+    <style>
+        .summary .line {
+            overflow: hidden;
+            white-space: nowrap;
+        }
 
-.summary .line a {
-    display: table-cell;
-    vertical-align: middle;
-    width: 180px;
-    text-align: center;
-}
+        .summary .line a {
+            display: table-cell;
+            vertical-align: middle;
+            width: 180px;
+            text-align: center;
+        }
 
-.summary .content {
-    display: table-cell;
-    vertical-align: middle;
-    padding-left: 20px;
-    text-align: left;
-    overflow: hidden;
-    *zoom: 1;
-}
+        .summary .content {
+            display: table-cell;
+            vertical-align: middle;
+            padding-left: 20px;
+            text-align: left;
+            overflow: hidden;
+            *zoom: 1;
+        }
 
-.powered {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    font-size: 32px;
-    color: #555;
-    margin-left: -140px !important;
-    margin-top: -50px !important;
-}
+        .powered {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            font-size: 32px;
+            color: #555;
+            margin-left: -140px !important;
+            margin-top: -50px !important;
+        }
 
-.powered .smaller {
-    font-size: 20px;
-}
+        .powered .smaller {
+            font-size: 20px;
+        }
 
-.powered p {
-    margin: 6px auto;
-}
+        .powered p {
+            margin: 6px auto;
+        }
 
-.powered a {
-    color: #555;
-}
+        .powered a {
+            color: #555;
+        }
 
-.page-1-title {
-    position: fixed;
-    left: 50%;
-    top: 0px;
-    font-size: 30px;
-    color: #555;
-    margin-left: -100px !important;
-    margin-top: -200px !important;
-    text-align: left;
-}
+        .page-1-title {
+            position: fixed;
+            left: 50%;
+            top: 0px;
+            font-size: 30px;
+            color: #555;
+            margin-left: -100px !important;
+            margin-top: -200px !important;
+            text-align: left;
+        }
 
-.page-1-content {
-    position: fixed;
-    width: 600px;
-    left: 50%;
-    top: 0px;
-    margin-left: -200px !important;
-    margin-top: -100px !important;
-    text-align: left;
-    font-size: 28px !important;
-}
+        .page-1-content {
+            position: fixed;
+            width: 600px;
+            left: 50%;
+            top: 0px;
+            margin-left: -200px !important;
+            margin-top: -100px !important;
+            text-align: left;
+            font-size: 28px !important;
+        }
 
-.reveal[data-background-transition=slide] > .backgrounds .slide-background, .reveal > .backgrounds .slide-background[data-background-transition=slide] {
-    background-size: contain;
-    background-position: 10% 30%;
-}
+        .reveal[data-background-transition=slide] > .backgrounds .slide-background, .reveal > .backgrounds .slide-background[data-background-transition=slide] {
+            background-size: contain;
+            background-position: 10% 30%;
+        }
 
-.reveal > .backgrounds .slide-background:nth-of-type(1),
-.reveal > .backgrounds .slide-background:nth-of-type(2) {
-    background-size: 80%;
-    background-position: 50% 30px;
-}
+        .reveal > .backgrounds .slide-background:nth-of-type(1),
+        .reveal > .backgrounds .slide-background:nth-of-type(2) {
+            background-size: 80%;
+            background-position: 50% 30px;
+        }
 
-.reveal > .backgrounds .slide-background:nth-last-of-type(2) {
-    background-size: cover;
-    background-position: 50% 50%;
-}
+        .reveal > .backgrounds .slide-background:nth-last-of-type(2) {
+            background-size: cover;
+            background-position: 50% 50%;
+        }
 
-.reveal .author {
-    margin-top: 100px;
-    font-size: 60px;
-}
+        .reveal .author {
+            margin-top: 100px;
+            font-size: 60px;
+        }
 
-.reveal .title {
-    margin-top: 60px;
-}
+        .reveal .title {
+            margin-top: 60px;
+        }
 
-.icon-box {
-    position: relative;
-    background: url(img/photo-icon.svg) 50% 50% no-repeat;
-    background-size: 66%;
-}
+        .icon-box {
+            position: relative;
+            background: url(img/photo-icon.svg) 50% 50% no-repeat;
+            background-size: 66%;
+        }
 
-.icon-box img {
-    width: 66%;
-}
+        .icon-box img {
+            width: 66%;
+        }
 
-.fade-box {
-    position: relative;
-    min-height: 500px;
-}
+        .fade-box {
+            position: relative;
+            min-height: 500px;
+        }
 
-.fade-box img {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto !important;
-}
+        .fade-box img {
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto !important;
+        }
 
-.qrcode {
-    width: 500px;
-}
+        .qrcode {
+            width: 500px;
+        }
 
-.mux-logo {
-    position: fixed;
-    z-index: 999;
-    left: 20px;
-    top: 20px;
-}
+        .mux-logo {
+            position: fixed;
+            z-index: 999;
+            left: 20px;
+            top: 20px;
+        }
 
-.icon-demo {
-    margin: 50px auto 0 !important;
-    width: 99%;
-}
+        .icon-demo {
+            margin: 50px auto 0 !important;
+            width: 99%;
+        }
 
-.icon-demo .icon-test {
-    font-family: icon-test;
-    min-height: 160px;
-    line-height: 160px;
-    border: 1px solid #bbb;
-    border-radius: 8px;
-    font-size: 100px;
-    display: block;
-    padding: 3px 0;
-    color: cadetblue;
-}
+        .icon-demo .icon-test {
+            font-family: icon-test;
+            min-height: 160px;
+            line-height: 160px;
+            border: 1px solid #bbb;
+            border-radius: 8px;
+            font-size: 100px;
+            display: block;
+            padding: 3px 0;
+            color: cadetblue;
+        }
 
-.icon-demo .icon-test:focus {
-    outline: 0 none;
-}
+        .icon-demo .icon-test:focus {
+            outline: 0 none;
+        }
 
-.icon-test {
-    position: relative;
-    letter-spacing: .3em;
-    word-wrap: break-word;
-    word-break: break-all;
-    -webkit-user-modify: read-write-plaintext-only; /* 粘贴时过滤富文本 */
-}
+        .icon-test {
+            position: relative;
+            letter-spacing: .3em;
+            word-wrap: break-word;
+            word-break: break-all;
+            -webkit-user-modify: read-write-plaintext-only; /* 粘贴时过滤富文本 */
+        }
 
-.icon-test:focus {
-    outline: 1px solid #66AFE9;
-    border-color: #66AFE9;
-    box-shadow: 0 0 8px rgba(102, 175, 233, 0.56);
-}
+        .icon-test:focus {
+            outline: 1px solid #66AFE9;
+            border-color: #66AFE9;
+            box-shadow: 0 0 8px rgba(102, 175, 233, 0.56);
+        }
 
-.icon-test pre {
-    padding: 0 6px;
-    letter-spacing: normal;
-    overflow: hidden;
-    background: none;
-    box-shadow: none;
-}
+        .icon-test pre {
+            padding: 0 6px;
+            letter-spacing: normal;
+            overflow: hidden;
+            background: none;
+            box-shadow: none;
+        }
 
-.icon-test {
-    font-family: "icon-test";
-    font-size: 16px;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    /* 1 */
-    speak: none;
-    /* 2 */
-    -webkit-font-smoothing: antialiased;
-    /* 3 */
-    -moz-osx-font-smoothing: grayscale;
-}
+        .icon-test {
+            font-family: "icon-test";
+            font-size: 16px;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            /* 1 */
+            speak: none;
+            /* 2 */
+            -webkit-font-smoothing: antialiased;
+            /* 3 */
+            -moz-osx-font-smoothing: grayscale;
+        }
 
-@font-face {
-    font-family: "icon-test";
-    font-weight: normal;
-    font-style: normal;
-    src: url("http://t.tbcdn.cn/apps/e/brix/fonts/uxiconfont.eot");
-    src: url("http://t.tbcdn.cn/apps/e/brix/fonts/uxiconfont.eot?#iefix") format("embedded-opentype"), url("http://t.tbcdn.cn/apps/e/brix/fonts/uxiconfont.woff") format("woff"), url("http://t.tbcdn.cn/apps/e/brix/fonts/uxiconfont.ttf") format("truetype"), url("http://t.tbcdn.cn/apps/e/brix/fonts/uxiconfont.svg#iconfont") format("svg");
-}
+        @font-face {
+            font-family: "icon-test";
+            font-weight: normal;
+            font-style: normal;
+            src: url("http://t.tbcdn.cn/apps/e/brix/fonts/uxiconfont.eot");
+            src: url("http://t.tbcdn.cn/apps/e/brix/fonts/uxiconfont.eot?#iefix") format("embedded-opentype"), url("http://t.tbcdn.cn/apps/e/brix/fonts/uxiconfont.woff") format("woff"), url("http://t.tbcdn.cn/apps/e/brix/fonts/uxiconfont.ttf") format("truetype"), url("http://t.tbcdn.cn/apps/e/brix/fonts/uxiconfont.svg#iconfont") format("svg");
+        }
 
-.user .con {
-    display: table-cell;
-    vertical-align: middle;
-    text-align: left;
-    padding-right: 20px;
-}
+        .user .con {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: left;
+            padding-right: 20px;
+        }
 
-.user .con img {
-    max-height: none;
-    max-width: 100%;
-}
+        .user .con img {
+            max-height: none;
+            max-width: 100%;
+        }
 
-.user .con h3 + h3 {
-    border-bottom: 2px solid #000;
-    min-width: 3em;
-    line-height: 1.3;
-}
+        .user .con h3 + h3 {
+            border-bottom: 2px solid #000;
+            min-width: 3em;
+            line-height: 1.3;
+        }
 
-.sec-p6 {
-    position: relative;
-    height: 640px;
-}
+        .sec-p6 {
+            position: relative;
+            height: 640px;
+        }
 
-.sec-p6 img {
-    position: absolute;
-    width: 360px;
-    display: block;
-    height: 640px;
-!important;
-}
+        .sec-p6 img {
+            position: absolute;
+            width: 360px;
+            display: block;
+            height: 640px;
+        !important;
+        }
 
-.img-p6-2 {
-    left: 300px;
-}
+        .img-p6-2 {
+            left: 300px;
+        }
 
-.img-p6-3 {
-    left: 600px;
-}
-</style>
-<script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
-<script type="text/javascript" src="js/socket.io.min.js"></script>
-<script type="text/javascript" src="js/qrcode.min.js"></script>
-<script type="text/javascript">
-    var env;
-    $(function () {
-        $('#demo-github').click(function () {
-            $(this).toggleClass('active');
+        .img-p6-3 {
+            left: 600px;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="js/socket.io.min.js"></script>
+    <script type="text/javascript" src="js/qrcode.min.js"></script>
+    <script type="text/javascript">
+        var env;
+        $(function () {
+            $('#demo-github').click(function () {
+                $(this).toggleClass('active');
+            })
         })
-    })
 
-    $.ajax({
-        // url: 'http://localhost:3000/getEnv',
-        // dataType: 'jsonp',
-        // success: function(data) {
-        //   env = data;
+        $.ajax({
+            // url: 'http://localhost:3000/getEnv',
+            // dataType: 'jsonp',
+            // success: function(data) {
+            //   env = data;
 
-        url: 'http://localhost:3000/env',
-        dataType: 'jsonp',
-        success: function (data) {
-            env = data;
+            url: 'http://localhost:3000/env',
+            dataType: 'jsonp',
+            success: function (data) {
+                env = data;
 
-            // draw qrcode
-            var qrcodedraw = new QRCodeLib.QRCodeDraw();
-            var request = ['http://', env.ip, ':', env.port, '/mobile/control'].join('');
-            qrcodedraw.draw(document.querySelector('.qrcode'), request, function (err) {
-                if (err) {
-                    return console.log(err.message);
-                }
-            });
-        }
-    })
+                // draw qrcode
+                var qrcodedraw = new QRCodeLib.QRCodeDraw();
+                var request = ['http://', env.ip, ':', env.port, '/mobile/control'].join('');
+                qrcodedraw.draw(document.querySelector('.qrcode'), request, function (err) {
+                    if (err) {
+                        return console.log(err.message);
+                    }
+                });
+            }
+        })
 
 
-    var socket = io.connect('http://localhost:3000');
+        var socket = io.connect('http://localhost:3000');
 
-    socket.on('animate', function () {
-        if ($('#qrcode').css('display') !== 'none') {
-            $('#demo-github').toggleClass('active');
-        }
-    })
+        socket.on('animate', function () {
+            if ($('#qrcode').css('display') !== 'none') {
+                $('#demo-github').toggleClass('active');
+            }
+        })
 
-    var socket = io.connect('http://localhost:3000');
-    socket.emit('ppt');
+        var socket = io.connect('http://localhost:3000');
+        socket.emit('ppt');
 
-    socket.on('ppt left', function () {
-        Reveal.left();
-    });
+        socket.on('ppt left', function () {
+            Reveal.left();
+        });
 
-    socket.on('ppt right', function () {
-        Reveal.right();
-    });
-</script>
+        socket.on('ppt right', function () {
+            Reveal.right();
+        });
+    </script>
 </head>
 
 <body>
@@ -379,14 +379,18 @@
             <div>
                 <img src="img/nfp9.png">
             </div>
-            <div style="font-size: 16px;text-align: left" >1、页面的每一帧内容都是GPU绘制出来的,它的最高绘制频率受限于显示器的刷新频率,大多数情况下最高的绘制平率只能是每秒60帧(frames per second, 即fps),对应于显示器的60Hz.因此在页面性能的测试中, 60fps是一个非常重要的指标,越接近越好.</div>
-            <div style="font-size: 16px;text-align: left" >2、如果出现偏向于30fps，就说明GPU渲染画面频率降低，出现掉帧</div>
+            <div style="font-size: 16px;text-align: left">
+                1、页面的每一帧内容都是GPU绘制出来的,它的最高绘制频率受限于显示器的刷新频率,大多数情况下最高的绘制平率只能是每秒60帧(frames per second,
+                即fps),对应于显示器的60Hz.因此在页面性能的测试中, 60fps是一个非常重要的指标,越接近越好.
+            </div>
+            <div style="font-size: 16px;text-align: left">2、如果出现偏向于30fps，就说明GPU渲染画面频率降低，出现掉帧</div>
         </section>
         <section>
             <div style="font-size: 16px">内存视图会通过一个图表显示您的页面随着时间的推移所使用的内存，你可以查看每个时间段的内存使用量，并找出性能问题</div>
             <div>
                 <img src="img/nfp10.png">
             </div>
+            <div class="fragment" style="font-size: 16px">性能优化的首要准则：避免持续引用太多DOM元素，注销掉过期的事件监听器，不要用全局变量存储你不需要的数据！</div>
         </section>
         <section>
             <div>3.内存分析Profiles</div>
@@ -410,9 +414,66 @@
             <div style="font-size: 20px">该对象被GC之后所能回收到内存的总和</div>
             <div style="font-size: 20px">不过，释放的时候还要排除被GC Roots直接或间接引用的对象.</div>
         </section>
+        <section>
+            <p>
+                JavaScript对象JS中有三种基础类型：
+            </p>
+
+            <p>
+                1、Numbers
+            </p>
+
+            <p>
+                2、Booleans
+            </p>
+
+            <p>
+                3、Strings
+            </p>
+
+        </section>
+        <section>
+            <p>
+                Numbers会以下面两种方式来存储:
+            </p>
+
+            <p>
+                1、small integers（SMIs）：31位内的整数值
+            </p>
+
+            <p>
+                2、heap numbers：超过SMI表大小的值，例如doubles
+            </p>
+        </section>
+        <section>
+            <p>
+                Strings也会对应两种存储方案:
+            </p>
+
+            <p>
+                1、VM heap
+            </p>
+
+            <p>
+                2、非VM heap
+            </p>
+        </section>
+        <section>
+            <div style="text-align: left">1、一个JS对象会从JS的堆内存（VM heap）中申请自己所需要的内存，而V8的垃圾回收器会在该对象不在活跃（没有任何对它的强引用后）后回收内存。
+            </div>
+            <div style="text-align: left">
+                2、本地对象（Native objects）代表那些不在JS堆内存中的对象集合，它不受控于V8的垃圾回收机制~
+            </div>
+        </section>
         <!-- 前端性能分析End-->
         <section data-background-transition="slide">
             <h3>网络层面上的性能调优</h3>
+        </section>
+        <section>
+            <div class="fragment" style="text-align: left">1、哪个资源响应（得到第一个数据包）最慢；</div>
+            <div class="fragment" style="text-align: left">2、哪个资源加载耗时最久；</div>
+            <div class="fragment" style="text-align: left">3、谁发起了一个网络请求；</div>
+            <div class="fragment" style="text-align: left">4、获取一个后端数据的各个网络阶段的耗时情况。</div>
         </section>
         <section>
             <div>1.chrome dev tool网络监控与调优Network</div>
@@ -451,7 +512,7 @@
             <h3>1、Node-inspector 的使用</h3>
         </section>
         <section>
-            <div >npm install node-inspector -g 进行安装</div>
+            <div>npm install node-inspector -g 进行安装</div>
             <div class="fragment">node —debug-brk app.js</div>
             <div class="fragment">启动node-inspector</div>
         </section>
@@ -490,7 +551,7 @@
         </section>
         <section>
             <div>
-               <img src="img/nfp1.png">
+                <img src="img/nfp1.png">
             </div>
             <div class="fragment">
                 <img src="img/nfp2.png">
@@ -510,7 +571,9 @@
         <section>
             <div><img src="img/nfp6.png"></div>
             <div>Bailout案例</div>
-            <div>https://github.com/ali-sdk/node-profiler/wiki/Bailout%E6%A1%88%E4%BE%8B#forinstatement-is-not-fast-case</div>
+            <div>
+                https://github.com/ali-sdk/node-profiler/wiki/Bailout%E6%A1%88%E4%BE%8B#forinstatement-is-not-fast-case
+            </div>
         </section>
         <section>
             <div>注意事项：</div>
@@ -529,6 +592,7 @@
         </section>
         <section>
             <h2>Q&A</h2>
+
             <h3>Thank You ^_^</h3>
             <!--  <p class="smaller fragment" style="margin-top: 15px">大导航|生活导航|吴荣华|wurh@ucweb.com</p> -->
         </section>
