@@ -532,7 +532,6 @@
         <section data-background-transition="slide">
             <h3>2、Node-profiler 的使用</h3>
         </section>
-
         <section>
             <div>Node Profiler 是什么？</div>
             <div class="fragment" style="text-align: left">1、Node Profiler是一款JavaScript的性能调优工具</div>
@@ -543,6 +542,26 @@
             <div class="fragment" style="text-align: left">1、V8是一个Javascript 语言的执行引擎</div>
             <div class="fragment" style="text-align: left">2、V8是JIT的方式执行Javascript代码，JS直接编译成机器码然后执行</div>
             <div class="fragment" style="text-align: left">3、V8对Javascript的处理是以函数为单位</div>
+        </section>
+        <section>
+            <div><h3>背景</h3></div>
+            <div><h3>Crankshaft</h3></div>
+        </section>
+        <section>
+            <div class="fragment" style="text-align: left">1、一个普通的编译器：FullCompiler</div>
+            <div class="fragment" style="text-align: left">2、一个优化编译器：Optiomizing Compiler</div>
+            <div class="fragment" style="text-align: left">3、运行时优化；</div>
+        </section>
+        <section>
+            <img src="img/v8youhua.png" />
+        </section>
+        <section>
+            <h3>影响因素</h3>
+        </section>
+        <section>
+            <div class="fragment" style="text-align: left">1、DONT_OPTIMIZE_NODE</div>
+            <div class="fragment" style="text-align: left">2、Bailot</div>
+            <div class="fragment" style="text-align: left">3、逆优化 - deoptimiztion；</div>
         </section>
         <section>
             <div>安装 Node-profiler</div>
@@ -570,10 +589,7 @@
         </section>
         <section>
             <div><img src="img/nfp6.png"></div>
-            <div>Bailout案例</div>
-            <div>
-                https://github.com/ali-sdk/node-profiler/wiki/Bailout%E6%A1%88%E4%BE%8B#forinstatement-is-not-fast-case
-            </div>
+            <a href="https://github.com/ali-sdk/node-profiler/wiki/Bailout%E6%A1%88%E4%BE%8B#forinstatement-is-not-fast-case">Bailout案例</a>
         </section>
         <section>
             <div>注意事项：</div>
